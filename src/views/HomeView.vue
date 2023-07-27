@@ -1,4 +1,7 @@
 <template>
+    <div v-if="data.popup">
+        <PopupFormVue />
+    </div>
     <MainViewVue>
         <HomeMenuVue />
     </MainViewVue>
@@ -7,11 +10,18 @@
 <script>
 import HomeMenuVue from '@/components/Menu/HomeMenu.vue'
 import MainViewVue from './MainView.vue'
+import PopupFormVue from '@/components/Popup/PopupForm.vue'
+import { useDataStore } from '@/store/DataStore'
 
 export default {
     components: {
         MainViewVue,
-        HomeMenuVue
+        HomeMenuVue,
+        PopupFormVue
+    },
+    setup() {
+        const data = useDataStore();
+        return {data}
     }
 }
 </script>

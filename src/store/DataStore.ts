@@ -6,7 +6,8 @@ export const useDataStore = defineStore('dataStore', {
         coffeeData: ref([]),
         cart: ref([]),
         data: ref(5),
-        greeting: ref("Hello")
+        greeting: ref("Hello"),
+        popup: ref(false)
     }),
     getters: {
         calSub(): any {
