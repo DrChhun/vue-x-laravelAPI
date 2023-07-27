@@ -9,7 +9,7 @@
                     <input class="py-2 px-4 border-2 border-gray-200 rounded-md" type="number" name="price" placeholder="price" v-model="formData.price">
                     <input class="py-2 px-4 border-2 border-gray-200 rounded-md" type="number" name="available" placeholder="available" v-model="formData.available">
                     <input class="py-2 px-4 border-2 border-gray-200 rounded-md" type="number" name="sold" placeholder="sold" v-model="formData.sold">
-                    <button type="submit" class="bg-black text-white rounded-md py-2 hover:bg-gray-800 duration-300">Submit</button>
+                    <button @click="handleToast" type="submit" class="bg-black text-white rounded-md py-2 hover:bg-gray-800 duration-300">Submit</button>
                 </form>
             </div>
         </div>
@@ -20,6 +20,8 @@
 import { useDataStore } from '@/store/DataStore';
 import axios from 'axios';
 import { ref } from 'vue';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
     setup() {
         const data = useDataStore();
@@ -30,22 +32,38 @@ export default {
             available: '',
             sold: ''
         });
+        const messagePOST = ref('');
 
         const token = 'XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur';
         const headers = {Authorization: `Bearer ${token}`};
 
-        const createPost = () => {
-            axios.post('http://localhost:8000/api/v1/coffees', {
+        const createPost = async () => {
+            await axios.post('http://localhost:8000/api/v1/coffees', {
                 title: formData.value.title,
                 price: formData.value.price,
                 available: formData.value.available,
                 sold: formData.value.sold
             }, {headers})
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => messagePOST.value = res.data)
+            .catch(err => messagePOST.value = err.message)
         }
 
-        return {handleClick, formData, createPost}
+        const handleToast = () => {
+            {messagePOST.value == 'Request failed with status code 422' || messagePOST.value == '' ?
+                toast.error(messagePOST, {
+                    autoClose: 1500,
+                    position: toast.POSITION.TOP_RIGHT,
+                })
+            :
+                toast.info(messagePOST, {
+                    autoClose: 1500,
+                    position: toast.POSITION.TOP_RIGHT,
+                })
+            }
+            console.log(messagePOST.value)
+        }
+
+        return {handleClick, formData, createPost, handleToast}
     }
 }
 </script>
