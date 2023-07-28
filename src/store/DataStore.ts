@@ -1,3 +1,4 @@
+import axios from "axios";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -7,7 +8,8 @@ export const useDataStore = defineStore('dataStore', {
         cart: ref([]),
         data: ref(5),
         greeting: ref("Hello"),
-        popup: ref(false)
+        popup: ref(false),
+        token: ref('XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur'),
     }),
     getters: {
         calSub(): any {
@@ -25,5 +27,17 @@ export const useDataStore = defineStore('dataStore', {
         }
     },
     actions: {
+        async fetchData() {
+            const token = 'XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur';
+            const headers = { Authorization: `Bearer ${token}` }
+            axios.get('http://localhost:8000/api/v1/coffees', { headers })
+                .then(res => this.coffeeData = res.data.data)
+        },
+        async deleteData(id: number) {
+            const token = 'XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur';
+            const headers = { Authorization: `Bearer ${token}` }
+            axios.delete(`http://localhost:8000/api/v1/coffees/${id}`, { headers })
+                .then(res => this.coffeeData = res.data.data)
+        }
     }
 })
