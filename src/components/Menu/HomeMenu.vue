@@ -3,7 +3,7 @@
     <InputBar class="mb-8" placeholder="Search" />
     <h2 class="text-2xl mb-8">Choose Menu</h2>
     <div class="grid grid-cols-2 gap-6 w-full">
-        <div v-for="x in dataApi" :key="x.id">
+        <div v-for="x in data.coffeeData" :key="x.id">
             <MenuCardVue 
                 :available="x.available" 
                 :name="x.title" 
@@ -24,8 +24,6 @@
 <script>
 import MenuCardVue from '../Card/MenuCard.vue'
 import InputBar from '../Input/InputBar.vue'
-import axios from 'axios';
-import { ref } from 'vue';
 import { useDataStore } from '@/store/DataStore';
 
 export default {
@@ -35,22 +33,14 @@ export default {
     },
     setup() {
         const data = useDataStore();
-        const dataApi = ref([])
-        const token = 'XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur';
-        const headers = {Authorization: `Bearer ${token}`}
-
-        const fetchLaravel = () => {
-            axios.get('http://localhost:8000/api/v1/coffees', {headers})
-            .then(res => dataApi.value = res.data.data)
-        }
 
         const handleOpenPopup = () => {
             data.popup = true
         }
 
-        fetchLaravel()
+        data.fetchData()
 
-        return {dataApi, handleOpenPopup}
+        return {handleOpenPopup, data}
     }
 }
 </script>

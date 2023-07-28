@@ -46,6 +46,7 @@ export default {
             }, {headers})
             .then(res => messagePOST.value = res.data)
             .catch(err => messagePOST.value = err.message)
+            data.fetchData()
         }
 
         const handleToast = () => {
@@ -53,14 +54,13 @@ export default {
                 toast.error(messagePOST, {
                     autoClose: 1500,
                     position: toast.POSITION.TOP_RIGHT,
-                })
+            })
             :
                 toast.info(messagePOST, {
                     autoClose: 1500,
                     position: toast.POSITION.TOP_RIGHT,
                 })
             }
-            console.log(messagePOST.value)
         }
 
         return {handleClick, formData, createPost, handleToast}

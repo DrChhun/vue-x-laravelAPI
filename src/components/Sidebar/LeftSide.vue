@@ -1,9 +1,13 @@
 <template>
   <div class="flex flex-col px-8 py-12 w-3/12 border-r-2 border-gray-100">
-    <h2 class="text-2xl font-bold mb-16">MEGA Coffee</h2>
+    <router-link to="/">
+        <h2 class="text-2xl font-bold mb-16">MEGA Coffee</h2>
+    </router-link>
     <div class="space-y-4">
         <div v-for="x in menu" :key="x.id">
-            <Menu :menuName="x.name" />
+            <router-link :to="x.route">
+                <Menu :menuName="x.name" />
+            </router-link>
         </div>
     </div>
   </div>
@@ -19,23 +23,28 @@ export default {
         const menu = [
             {
                 id: '1',
-                name: "Menu"
+                name: "Menu",
+                route: 'menu'
             },
             {
                 id: '2',
-                name: "Order List"
+                name: "Order List",
+                route: 'list'
             },
             {
                 id: '3',
-                name: "Order History"
+                name: "Order History",
+                route: 'history'
             },
             {
                 id: '4',
-                name: "Revenue"
+                name: "Revenue",
+                route: 'revenue'
             },
             {
                 id: '5',
-                name: "Manage Data"
+                name: "Manage Data",
+                route: 'manage'
             }
         ]
 
