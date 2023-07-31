@@ -15,8 +15,9 @@
       <p>${{ total }}</p>
     </div>
     <button
-      @click="handleClick"
-      class="w-full bg-black text-white text-lg py-2 font-bold rounded-md hover:bg-gray-700 duration-300"
+        :disabled="data.cart.length < 1"
+        @click="handleClick"
+        class="w-full bg-black text-white text-lg py-2 font-bold rounded-md hover:bg-gray-700 duration-300"
     >
       Order Now
     </button>
@@ -35,11 +36,17 @@ export default {
     const doc = new jsPDF()
     const today = new Date();
 
-    const handleClick = () => {
+    const handleClick = async () => {
         const invoiceNumber = 'INV-001'
         const customerEmail = 'custsomer@ohio.com'
 
         const items = data.cart
+
+        console.log(items)
+
+        await Promise.all(items.map(async x => {
+            await data.updateData(x.id, x.available, x.total, x.sold);
+        })) //use promise to make sure we wait for all api to complete
 
         doc.setFontSize(18)
         doc.text('Invoice', 14, 22)
@@ -84,7 +91,7 @@ export default {
         location.reload()
     };
 
-    return { data, handleClick };
+    return { data, handleClick};
   },
 };
 </script>
