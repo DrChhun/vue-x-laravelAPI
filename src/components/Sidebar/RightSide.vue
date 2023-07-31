@@ -3,13 +3,13 @@
     <div class="px-6 py-12">
       <div>
       <h2 class="text-2xl font-bold mb-8">Order Information</h2>
-      <InputBar class="mb-8" placeholder="Input Customer Name" />
+      <InputBar @change="handleChange" class="mb-8" :value="data.customerName" placeholder="Input Customer Name" />
       <h2 class="text-xl">Order Detail</h2>
       <div class="space-y-2 py-2">
         <div v-for="(x, index) in data.cart" :key="index">
           <OrderCard 
             :name="x.name"
-            :price="x.price"
+            :price="x.itemPrice"
             :available="x.available"
             :sold="x.sold"
             :total="x.total"
@@ -43,7 +43,8 @@ export default {
     },
     setup() {
       const data = useDataStore()
-      return {data}
+      const handleChange = (e) => data.customerName = e.target.value
+      return {data, handleChange}
     }
 }
 </script>

@@ -19,7 +19,7 @@
 <script>
 import {useDataStore} from '../../store/DataStore'
 export default {
-    props: ['name', 'price', 'total', 'id'],
+    props: ['name', 'price', 'total', 'id',],
     setup(props) {
         const data = useDataStore()
         const handleRemove = () => data.cart.splice(props.id, props.id + 1)   

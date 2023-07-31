@@ -21,16 +21,16 @@ export default {
     },
     setup() {
         const menu = [
-            {
-                id: '1',
-                name: "Menu",
-                route: 'menu'
-            },
-            {
-                id: '2',
-                name: "Order List",
-                route: 'list'
-            },
+            // {
+            //     id: '1',
+            //     name: "Menu",
+            //     route: 'menu'
+            // },
+            // {
+            //     id: '2',
+            //     name: "Order List",
+            //     route: 'list'
+            // },
             {
                 id: '3',
                 name: "Order History",
