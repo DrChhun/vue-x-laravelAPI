@@ -10,6 +10,7 @@ export const useDataStore = defineStore('dataStore', {
         greeting: ref("Hello"),
         popup: ref(false),
         token: ref('XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur'),
+        customerName: ref('')
     }),
     getters: {
         calSub(): any {

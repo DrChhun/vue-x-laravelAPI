@@ -31,7 +31,8 @@ export default {
         const data = useDataStore();
         const handleClick = (name, available, sold, calPrice, total, id) => {
             let price = calPrice * total
-            data.cart.push({available, sold, name, price, total, id})
+            let itemPrice = calPrice
+            data.cart.push({available, sold, name, itemPrice, price, total, id})
         }
         let itemCount = ref(1);
 
