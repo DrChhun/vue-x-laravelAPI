@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between text-start w-5/12 border-l-2 border-gray-100">
+  <div :class="{'hidden': getPath === 'history' || getPath == 'manage'}" class="flex flex-col justify-between text-start w-5/12 border-l-2 border-gray-100">
     <div class="px-6 py-12">
       <div>
       <h2 class="text-2xl font-bold mb-8">Order Information</h2>
@@ -44,7 +44,13 @@ export default {
     setup() {
       const data = useDataStore()
       const handleChange = (e) => data.customerName = e.target.value
-      return {data, handleChange}
+
+      const href = window.location.href;
+      const path = href.split('/');
+      const pathLength = path.length;
+      const getPath = path[pathLength - 1];
+
+      return {data, handleChange, getPath}
     }
 }
 </script>

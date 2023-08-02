@@ -48,7 +48,12 @@ export default {
             }
         ]
 
-        return {menu}
+        const href = window.location.href;
+        const path = href.split('/');
+        const pathLength = path.length;
+        const getPath = path[pathLength - 1];
+
+        return {menu, getPath}
     }
 }
 </script>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ManageView from '../views/ManageView.vue'
+import HistoryView from '../views/HistoryView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/manage',
     name: 'manage',
     component: ManageView
+  },
+  {
+    path: '/history',
+    name: 'history',
+    component: HistoryView
   }
 ]
 
