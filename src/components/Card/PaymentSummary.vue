@@ -48,6 +48,9 @@ export default {
             await data.updateData(x.id, x.available, x.total, x.sold);
         })) //use promise to make sure we wait for all api to complete
 
+        //post data to database history
+        data.addHistory(data.cart)
+
         doc.setFontSize(18)
         doc.text('Invoice', 14, 22)
 

@@ -4,6 +4,7 @@ import { ref } from "vue";
 
 export const useDataStore = defineStore('dataStore', {
     state: () => ({
+        historyData: ref([]),
         coffeeData: ref([]),
         cart: ref([]),
         data: ref(5),
@@ -43,6 +44,17 @@ export const useDataStore = defineStore('dataStore', {
             await axios.patch(`http://localhost:8000/api/v1/coffees/${id}`, {
                 available: oldItem - updateItem,
                 sold: sold + updateItem
+            }, { headers })
+        },
+        async getHistory() {
+            const headers = { Authorization: `Bearer ${this.token}` }
+            await axios.get('http://localhost:8000/api/v1/history', { headers })
+                .then(res => this.historyData = res.data)
+        },
+        async addHistory(props: any) {
+            const headers = { Authorization: `Bearer ${this.token}` }
+            await axios.post('http://localhost:8000/api/v1/history', {
+                data: props,
             }, { headers })
         }
     }
