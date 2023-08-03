@@ -10,7 +10,7 @@ export const useDataStore = defineStore('dataStore', {
         data: ref(5),
         greeting: ref("Hello"),
         popup: ref(false),
-        token: ref('GpWkPiQsvBhXDKTRFYuMKJkpnQkioC9NzyBpu5R0'),
+        token: ref('j5PxFYtf1g7AH4HR3haVUG5iZdT0oE0uWzE3VJgw'),
         customerName: ref('')
     }),
     getters: {
