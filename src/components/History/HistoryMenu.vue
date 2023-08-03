@@ -34,7 +34,7 @@ export default {
         const img = 'https://www.whiskaffair.com/wp-content/uploads/2020/12/Iced-Vanilla-Latte-2-3.jpg';
 
         const getHistory = async () => {
-            const headers = { Authorization: `Bearer GpWkPiQsvBhXDKTRFYuMKJkpnQkioC9NzyBpu5R0` }
+            const headers = { Authorization: `Bearer j5PxFYtf1g7AH4HR3haVUG5iZdT0oE0uWzE3VJgw` }
             await axios.get('http://localhost:8000/api/v1/history', { headers })
                 .then(res => historyData.value = res.data.data)
                 .then(err => console.log(err))
