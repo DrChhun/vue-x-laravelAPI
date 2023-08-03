@@ -35,8 +35,8 @@ export default {
 
         const getHistory = async () => {
             const headers = { Authorization: `Bearer j5PxFYtf1g7AH4HR3haVUG5iZdT0oE0uWzE3VJgw` }
-            await axios.get('http://143.198.194.237:1337/api/blogs?populate=*')
-            // await axios.get('http://128.199.202.99/api/v1/history', { headers })
+            // await axios.get('http://143.198.194.237:1337/api/blogs?populate=*')
+            await axios.get('http://128.199.202.99/api/v1/history', { headers })
                 .then(res => historyData.value = res.data.data)
                 .then(err => console.log(err))
         }
