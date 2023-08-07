@@ -31,29 +31,29 @@ export const useDataStore = defineStore('dataStore', {
     actions: {
         async fetchData() {
             const headers = { Authorization: `Bearer ${this.token}` }
-            axios.get('http://128.199.202.99/api/v1/coffees', { headers })
+            axios.get('https://mega-api.xyz/api/v1/coffees', { headers })
                 .then(res => this.coffeeData = res.data.data)
         },
         async deleteData(id: number) {
             const headers = { Authorization: `Bearer ${this.token}` }
-            axios.delete(`http://128.199.202.99/api/v1/coffees/${id}`, { headers })
+            axios.delete(`https://mega-api.xyz/api/v1/coffees/${id}`, { headers })
                 .then(res => this.coffeeData = res.data.data)
         },
         async updateData(id: number, oldItem: number, updateItem: number, sold: number) {
             const headers = { Authorization: `Bearer ${this.token}` }
-            await axios.patch(`http://128.199.202.99/api/v1/coffees/${id}`, {
+            await axios.patch(`https://mega-api.xyz/api/v1/coffees/${id}`, {
                 available: oldItem - updateItem,
                 sold: sold + updateItem
             }, { headers })
         },
         async getHistory() {
             const headers = { Authorization: `Bearer ${this.token}` }
-            await axios.get('http://128.199.202.99/api/v1/history', { headers })
+            await axios.get('https://mega-api.xyz/api/v1/history', { headers })
                 .then(res => this.historyData = res.data)
         },
         async addHistory(props: any) {
             const headers = { Authorization: `Bearer ${this.token}` }
-            await axios.post('http://128.199.202.99/api/v1/history', {
+            await axios.post('https://mega-api.xyz/api/v1/history', {
                 data: props,
             }, { headers })
         }
