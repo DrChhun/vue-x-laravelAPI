@@ -13,7 +13,7 @@
                                 <p>items x {{x.total}}</p>
                             </div>
                             <div class="text-end">
-                                <p class="text-xl font-semibold">Price ${{x.price * x.total}}</p>
+                                <p class="text-xl font-semibold">Price ${{x.itemPrice * x.total}}</p>
                                 <p class="text-gray-500">VAT not included</p>
                             </div>
                         </div>
