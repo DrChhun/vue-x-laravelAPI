@@ -38,7 +38,7 @@ export default {
         const headers = {Authorization: `Bearer ${token}`};
 
         const createPost = async () => {
-            await axios.post('http://localhost:8000/api/v1/coffees', {
+            await axios.post('https://mega-api.xyz/api/v1/coffees', {
                 title: formData.value.title,
                 price: formData.value.price,
                 available: formData.value.available,
