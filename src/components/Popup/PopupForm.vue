@@ -34,7 +34,7 @@ export default {
         });
         const messagePOST = ref('');
 
-        const token = 'XN9REjk3pnMe748dwkP2gAfwSWzAL6KyQ8Hcy8ur';
+        const token = 'j5PxFYtf1g7AH4HR3haVUG5iZdT0oE0uWzE3VJgw';
         const headers = {Authorization: `Bearer ${token}`};
 
         const createPost = async () => {
