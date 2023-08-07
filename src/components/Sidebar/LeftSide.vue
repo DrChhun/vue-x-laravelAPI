@@ -36,11 +36,11 @@ export default {
                 name: "Order History",
                 route: 'history'
             },
-            {
-                id: '4',
-                name: "Revenue",
-                route: 'revenue'
-            },
+            // {
+            //     id: '4',
+            //     name: "Revenue",
+            //     route: 'revenue'
+            // },
             {
                 id: '5',
                 name: "Manage Data",
