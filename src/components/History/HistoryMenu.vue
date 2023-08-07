@@ -3,7 +3,7 @@
         <h2 class="text-2xl font-bold">Order History</h2>
         <div class="py-4 mt-4 space-y-4">
             <div class="space-y-4" v-for="(x, index) in historyData" :key="index">
-                <h2 class="text-xl font-semibold">Order #{{x.order}}</h2>
+                <h2 class="text-xl font-semibold">Order #{{x?.order}} {{x}}</h2>
                 <div class="flex" v-for="(x, index) in JSON.parse(x[0])" :key="index">
                     <img class="w-32 aspect-sqare rounded-md group-hover:scale-105 duration-1000" src="https://www.whiskaffair.com/wp-content/uploads/2020/12/Iced-Vanilla-Latte-2-3.jpg" alt="">
                     <div class="ml-8 w-full">
